@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>الإيرادات غير النفطية | officialnet</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+  <!-- Chart -->
+  <script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Cairo', sans-serif;
+      background: #f8fafc;
+      color: #0f172a;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 24px;
+    }
+
+    header {
+      background: #ffffff;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #64748b;
+      font-weight: 600;
+      margin-left: 16px;
+    }
+
+    h1 {
+      margin-top: 32px;
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 16px;
+      padding: 24px;
+      margin-top: 24px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.04);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 16px;
+      font-size: 0.95rem;
+    }
+
+    th, td {
+      padding: 10px;
+      border: 1px solid #d1d5db;
+      text-align: center;
+    }
+
+    th {
+      background: #d1d5db;
+      font-weight: 700;
+    }
+
+    tbody tr:nth-child(even) {
+      background: #f3f4f6;
+    }
+
+    #chart {
+      height: 420px;
+      margin-top: 24px;
+    }
+
+    @media (max-width: 768px) {
+      table {
+        font-size: 0.8rem;
+      }
+
+      #chart {
+        height: 300px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <nav>
+      <strong>officialnet</strong>
+      <div>
+        <a href="index.html">الرئيسية</a>
+        <a href="stats.html">الإحصائيات</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main class="container">
+
+  <h1>الإيرادات غير النفطية</h1>
+  <p>
+    يوضح هذا الجدول والرسم تطور مصادر الإيرادات غير النفطية
+    ومساهمة كل بند في الإجمالي عبر السنوات.
+  </p>
+
+  <!-- TABLE -->
+  <div class="card">
+    <h2>الجدول التفصيلي</h2>
+
+    <table>
+      <thead>
+        <tr>
+          <th>العام</th>
+          <th>الإجمالي</th>
+          <th>الضرائب على السلع والخدمات</th>
+          <th>%</th>
+          <th>الضرائب المتبقية</th>
+          <th>%</th>
+          <th>الأخرى</th>
+          <th>%</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>2016</td><td>186</td><td>30</td><td>16%</td><td>52</td><td>28%</td><td>104</td><td>56%</td></tr>
+        <tr><td>2017</td><td>256</td><td>39</td><td>15%</td><td>48</td><td>19%</td><td>169</td><td>66%</td></tr>
+        <tr><td>2018</td><td>294</td><td>115</td><td>39%</td><td>53</td><td>18%</td><td>126</td><td>43%</td></tr>
+        <tr><td>2019</td><td>332</td><td>155</td><td>47%</td><td>65</td><td>20%</td><td>112</td><td>34%</td></tr>
+        <tr><td>2020</td><td>369</td><td>163</td><td>44%</td><td>63</td><td>17%</td><td>143</td><td>39%</td></tr>
+        <tr><td>2021</td><td>403</td><td>251</td><td>62%</td><td>66</td><td>16%</td><td>86</td><td>21%</td></tr>
+        <tr><td>2022</td><td>411</td><td>251</td><td>61%</td><td>72</td><td>18%</td><td>88</td><td>21%</td></tr>
+        <tr><td>2023</td><td>458</td><td>262</td><td>57%</td><td>95</td><td>21%</td><td>101</td><td>22%</td></tr>
+        <tr><td>2024</td><td>502</td><td>289</td><td>58%</td><td>92</td><td>18%</td><td>121</td><td>24%</td></tr>
+        <tr><td>2025</td><td>501</td><td>297</td><td>59%</td><td>96</td><td>19%</td><td>108</td><td>22%</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- CHART -->
+  <div class="card">
+    <h2>التمثيل البياني</h2>
+    <div id="chart"></div>
+  </div>
+
+</main>
+
+<script>
+  const chart = echarts.init(document.getElementById('chart'));
+
+  chart.setOption({
+    tooltip: { trigger: 'axis' },
+    legend: {
+      data: ['السلع والخدمات', 'الضرائب المتبقية', 'الأخرى']
+    },
+    xAxis: {
+      type: 'category',
+      data: ['2016','2017','2018','2019','2020','2021','2022','2023','2024','2025']
+    },
+    yAxis: {
+      type: 'value'
+    },
+    series: [
+      {
+        name: 'السلع والخدمات',
+        type: 'bar',
+        stack: 'total',
+        data: [30,39,115,155,163,251,251,262,289,297]
+      },
+      {
+        name: 'الضرائب المتبقية',
+        type: 'bar',
+        stack: 'total',
+        data: [52,48,53,65,63,66,72,95,92,96]
+      },
+      {
+        name: 'الأخرى',
+        type: 'bar',
+        stack: 'total',
+        data: [104,169,126,112,143,86,88,101,121,108]
+      }
+    ]
+  });
+
+  window.addEventListener('resize', () => chart.resize());
+</script>
+
+</body>
+</html>
