@@ -18,7 +18,9 @@
       --border: #e5e7eb;
     }
 
-    * { box-sizing: border-box; }
+    * {
+      box-sizing: border-box;
+    }
 
     body {
       margin: 0;
@@ -45,6 +47,11 @@
       align-items: center;
     }
 
+    .brand {
+      font-weight: 700;
+      font-size: 1.2rem;
+    }
+
     nav a {
       text-decoration: none;
       color: var(--muted);
@@ -54,11 +61,6 @@
 
     nav a:hover {
       color: var(--primary);
-    }
-
-    .brand {
-      font-weight: 700;
-      font-size: 1.2rem;
     }
 
     .card {
@@ -84,6 +86,7 @@
       nav {
         flex-direction: column;
         align-items: flex-start;
+        gap: 12px;
       }
     }
   </style>
@@ -95,9 +98,8 @@
     <nav>
       <div class="brand">officialnet</div>
       <div>
-        <a href="#">الرئيسية</a>
-        <a href="#">الإحصائيات</a>
-        <a href="#">المقالات</a>
+        <a href="index.html">الرئيسية</a>
+        <a href="stats.html">الإحصائيات</a>
       </div>
     </nav>
   </div>
@@ -110,16 +112,16 @@
     <p>
       هذه منصتي الشخصية لعرض الأفكار، الأرقام، والتحليل البصري.
       <br>
-      هنا أقدّم محتوى مبسّط قائم على الإحصائيات والمقارنات بطريقة تفاعلية.
+      أقدّم هنا محتوى مبسّطًا يعتمد على الإحصائيات والمقارنات لفهم الواقع بشكل أوضح.
     </p>
   </div>
 
   <div class="card">
-    <h2>ما الذي ستجده هنا؟</h2>
+    <h2>ماذا ستجد في الموقع؟</h2>
     <ul>
       <li>تمثيلات بيانية ومقارنات رقمية</li>
-      <li>مقالات تحليلية</li>
-      <li>أدوات وتجارب تفاعلية</li>
+      <li>تحليل بيانات بلغة واضحة</li>
+      <li>تجارب وأفكار قابلة للتفاعل</li>
     </ul>
   </div>
 
