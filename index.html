@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>officialnet</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #f8fafc;
+      --card: #ffffff;
+      --primary: #2563eb;
+      --text: #0f172a;
+      --muted: #64748b;
+      --border: #e5e7eb;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: 'Cairo', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    header {
+      background: var(--card);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: auto;
+      padding: 24px;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--muted);
+      font-weight: 600;
+      margin-left: 16px;
+    }
+
+    nav a:hover {
+      color: var(--primary);
+    }
+
+    .brand {
+      font-weight: 700;
+      font-size: 1.2rem;
+    }
+
+    .card {
+      background: var(--card);
+      border-radius: 16px;
+      padding: 32px;
+      margin-top: 32px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.04);
+    }
+
+    footer {
+      margin-top: 64px;
+      border-top: 1px solid var(--border);
+      background: var(--card);
+    }
+
+    footer p {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <nav>
+      <div class="brand">officialnet</div>
+      <div>
+        <a href="#">الرئيسية</a>
+        <a href="#">الإحصائيات</a>
+        <a href="#">المقالات</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main class="container">
+
+  <div class="card">
+    <h1>مرحبًا 👋</h1>
+    <p>
+      هذه منصتي الشخصية لعرض الأفكار، الأرقام، والتحليل البصري.
+      <br>
+      هنا أقدّم محتوى مبسّط قائم على الإحصائيات والمقارنات بطريقة تفاعلية.
+    </p>
+  </div>
+
+  <div class="card">
+    <h2>ما الذي ستجده هنا؟</h2>
+    <ul>
+      <li>تمثيلات بيانية ومقارنات رقمية</li>
+      <li>مقالات تحليلية</li>
+      <li>أدوات وتجارب تفاعلية</li>
+    </ul>
+  </div>
+
+</main>
+
+<footer>
+  <div class="container">
+    <p>© 2025 — officialnet</p>
+  </div>
+</footer>
+
+</body>
+</html>
