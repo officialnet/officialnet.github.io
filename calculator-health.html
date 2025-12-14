@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>حاسبة رواتب شركة الصحة القابضة</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Cairo', sans-serif;
+      background: #f8fafc;
+      color: #0f172a;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: auto;
+      padding: 24px;
+    }
+
+    header {
+      background: #ffffff;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #64748b;
+      font-weight: 600;
+      margin-left: 16px;
+    }
+
+    h1 {
+      margin-top: 32px;
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 16px;
+      padding: 24px;
+      margin-top: 24px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.04);
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      font-size: 1rem;
+      margin-top: 8px;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 16px;
+    }
+
+    td {
+      padding: 10px;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    .total {
+      font-weight: 700;
+    }
+
+    .deduction {
+      background: #fee2e2;
+      font-weight: 600;
+    }
+
+    .net {
+      background: #dcfce7;
+      font-weight: 700;
+    }
+
+    .note {
+      font-size: 0.9rem;
+      color: #64748b;
+      margin-top: 16px;
+    }
+
+    @media (max-width: 768px) {
+      td {
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <nav>
+      <strong>officialnet</strong>
+      <div>
+        <a href="index.html">الرئيسية</a>
+        <a href="stats.html">الإحصائيات</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main class="container">
+
+  <h1>حاسبة رواتب شركة الصحة القابضة</h1>
+
+  <div class="card">
+    <label>الراتب الأساسي الحالي</label>
+    <input type="number" id="base">
+
+    <label style="margin-top:12px">إجمالي البدلات الحالية</label>
+    <input type="number" id="allowances">
+  </div>
+
+  <div class="card">
+    <h2>النتائج</h2>
+
+    <table>
+      <tr>
+        <td>الراتب الإجمالي قبل التحول</td>
+        <td id="totalBefore">0</td>
+      </tr>
+      <tr class="deduction">
+        <td>خصم التأمينات (9%)</td>
+        <td id="deductionBefore">0</td>
+      </tr>
+      <tr class="net">
+        <td>الراتب الصافي قبل التحول</td>
+        <td id="netBefore">0</td>
+      </tr>
+
+      <tr><td colspan="2"></td></tr>
+
+      <tr>
+        <td>الراتب الأساسي بعد التحول</td>
+        <td id="baseAfter">0</td>
+      </tr>
+      <tr>
+        <td>بدل سكن (25%)</td>
+        <td id="housing">0</td>
+      </tr>
+      <tr>
+        <td>بدل نقل (10%)</td>
+        <td id="transport">0</td>
+      </tr>
+      <tr class="total">
+        <td>الراتب الإجمالي بعد التحول</td>
+        <td id="totalAfter">0</td>
+      </tr>
+      <tr class="deduction">
+        <td>خصم التأمينات (9.75%)</td>
+        <td id="deductionAfter">0</td>
+      </tr>
+      <tr class="net">
+        <td>الراتب الصافي بعد التحول</td>
+        <td id="netAfter">0</td>
+      </tr>
+    </table>
+
+    <p class="note">
+      ⚠️ هذه الحاسبة تقديرية وغير رسمية، وتعتمد على معادلة مبسطة لغرض التوضيح فقط.
+    </p>
+  </div>
+
+</main>
+
+<script>
+  const baseInput = document.getElementById('base');
+  const allowancesInput = document.getElementById('allowances');
+
+  function calc() {
+    const base = +baseInput.value || 0;
+    const allowances = +allowancesInput.value || 0;
+
+    const totalBefore = base + allowances;
+    const deductionBefore = totalBefore * 0.09;
+    const netBefore = totalBefore - deductionBefore;
+
+    const baseAfter = netBefore / (1 + 0.25 + 0.10 - 0.0975);
+    const housing = baseAfter * 0.25;
+    const transport = baseAfter * 0.10;
+    const totalAfter = baseAfter + housing + transport;
+    const deductionAfter = totalAfter * 0.0975;
+    const netAfter = totalAfter - deductionAfter;
+
+    totalBeforeEl.textContent = totalBefore.toFixed(2);
+    deductionBeforeEl.textContent = deductionBefore.toFixed(2);
+    netBeforeEl.textContent = netBefore.toFixed(2);
+
+    baseAfterEl.textContent = baseAfter.toFixed(2);
+    housingEl.textContent = housing.toFixed(2);
+    transportEl.textContent = transport.toFixed(2);
+    totalAfterEl.textContent = totalAfter.toFixed(2);
+    deductionAfterEl.textContent = deductionAfter.toFixed(2);
+    netAfterEl.textContent = netAfter.toFixed(2);
+  }
+
+  const totalBeforeEl = document.getElementById('totalBefore');
+  const deductionBeforeEl = document.getElementById('deductionBefore');
+  const netBeforeEl = document.getElementById('netBefore');
+  const baseAfterEl = document.getElementById('baseAfter');
+  const housingEl = document.getElementById('housing');
+  const transportEl = document.getElementById('transport');
+  const totalAfterEl = document.getElementById('totalAfter');
+  const deductionAfterEl = document.getElementById('deductionAfter');
+  const netAfterEl = document.getElementById('netAfter');
+
+  baseInput.addEventListener('input', calc);
+  allowancesInput.addEventListener('input', calc);
+</script>
+
+</body>
+</html>
