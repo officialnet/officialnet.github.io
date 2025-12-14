@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>الإحصائيات | officialnet</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Cairo', sans-serif;
+      background: #f8fafc;
+      color: #0f172a;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: auto;
+      padding: 24px;
+    }
+
+    header {
+      background: #ffffff;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #64748b;
+      font-weight: 600;
+      margin-left: 16px;
+    }
+
+    nav a:hover {
+      color: #2563eb;
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 16px;
+      padding: 32px;
+      margin-top: 32px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.04);
+    }
+
+    #chart {
+      height: 360px;
+      margin-top: 24px;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <nav>
+      <strong>officialnet</strong>
+      <div>
+        <a href="index.html">الرئيسية</a>
+        <a href="stats.html">الإحصائيات</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main class="container">
+
+  <div class="card">
+    <h1>الإحصائيات والأرقام 📊</h1>
+    <p>
+      في هذا القسم أقدّم تمثيلات بيانية مبسطة،
+      تهدف إلى فهم الاتجاهات والمقارنات بدل عرض الأرقام المجردة.
+    </p>
+  </div>
+
+  <div class="card">
+    <h2>مثال: تطور مؤشر عبر السنوات</h2>
+    <div id="chart"></div>
+  </div>
+
+</main>
+
+<script>
+  const chart = echarts.init(document.getElementById('chart'));
+
+  chart.setOption({
+    tooltip: { trigger: 'axis' },
+    xAxis: {
+      type: 'category',
+      data: ['2019','2020','2021','2022','2023']
+    },
+    yAxis: {
+      type: 'value'
+    },
+    series: [{
+      data: [80, 82, 79, 85, 86],
+      type: 'line',
+      smooth: true,
+      lineStyle: { width: 3 },
+      itemStyle: { color: '#2563eb' }
+    }]
+  });
+
+  window.addEventListener('resize', () => chart.resize());
+</script>
+
+</body>
+</html>
